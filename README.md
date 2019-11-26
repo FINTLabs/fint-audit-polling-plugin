@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/FINTlabs/fint-audit-polling-plugin.svg?branch=master)](https://travis-ci.org/FINTlabs/fint-audit-polling-plugin)
 [![Coverage Status](https://coveralls.io/repos/github/FINTLabs/fint-audit-polling-plugin/badge.svg?branch=master)](https://coveralls.io/github/FINTLabs/fint-audit-polling-plugin?branch=master)
 
-Implementation of fint-audit-api using mongodb.
+Implementation of fint-audit-api using internal buffer that can be pulled via REST.
 
 ## Installation
 

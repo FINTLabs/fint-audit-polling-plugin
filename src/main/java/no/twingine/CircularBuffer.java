@@ -2,6 +2,7 @@ package no.twingine;
 
 import java.nio.BufferOverflowException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReferenceArray;
@@ -50,6 +51,10 @@ public class CircularBuffer<T> {
     }
 
     public List<T> drain(AtomicLong idx) {
+        if (idx.get() > index.get()) {
+            idx.set(index.get());
+            return Collections.emptyList();
+        }
         if (index.get() - idx.get() > size) {
             idx.set(index.get());
             throw new BufferOverflowException();
