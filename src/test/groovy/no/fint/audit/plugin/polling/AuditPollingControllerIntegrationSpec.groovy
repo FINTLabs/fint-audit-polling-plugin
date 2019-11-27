@@ -28,8 +28,8 @@ class AuditPollingControllerIntegrationSpec extends MockMvcSpecification {
         noExceptionThrown()
         1 * auditPollingRepository.getEvents(_ as AtomicLong) >> [new AuditEvent(new Event('test.org', 'Spock', 'TEST_ALL', 'Anyone'))]
         response.andExpect(status().isOk())
-                .andExpect(jsonPathSize('$', 1))
-                .andExpect(jsonPathEquals('$[0].orgId', 'test.org'))
+                .andExpect(jsonPathSize('$.events', 1))
+                .andExpect(jsonPathEquals('$.events.[0].orgId', 'test.org'))
                 .andDo(MockMvcResultHandlers.print())
     }
 }
