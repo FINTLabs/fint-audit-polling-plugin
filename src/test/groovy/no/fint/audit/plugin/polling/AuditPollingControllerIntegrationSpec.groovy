@@ -21,8 +21,11 @@ class AuditPollingControllerIntegrationSpec extends MockMvcSpecification {
     }
 
     def "Fetch audit events"() {
+        given:
+        def epoch = auditPollingController.epoch
+
         when:
-        def response = mockMvc.perform(get('/admin/audit?index=0'))
+        def response = mockMvc.perform(get('/admin/audit/events/{epoch}/0', epoch))
 
         then:
         noExceptionThrown()
